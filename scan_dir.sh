@@ -10,11 +10,6 @@ readarray TARGET_DIR_FILES <<< "$(find "$TARGET_DIR" -maxdepth 1 -type f -exec r
 readarray TARGET_DIR_DIRECTORIES <<< "$(find "$TARGET_DIR" -mindepth 1 -maxdepth 1 -type d -exec realpath --relative-to="$(pwd)" {} \;)"
 
 # Get file sizes
-FILE_SIZES=""
-FILE_NAMES=""
-
-DIR_SIZES=""
-DIR_NAMES=""
 for file in "${TARGET_DIR_FILES[@]}"; do
   du_output=$(du -sh "${file::-1}" 2> /dev/null)
   FILE_SIZES="$FILE_SIZES*$(cut -d ' ' -f 1 <(echo $du_output))"
@@ -27,6 +22,11 @@ for dir in "${TARGET_DIR_DIRECTORIES[@]}"; do
   DIR_NAMES="$DIR_NAMES*$(cut -d ' ' -f 2 <(echo $du_output))"
 done
 
+FILE_SIZES="${FILE_SIZES:1}"
+FILE_NAMES="${FILE_NAMES:1}"
+
+DIR_SIZES="${DIR_SIZES:1}"
+DIR_NAMES="${DIR_NAMES:1}"
 
 echo $FILE_SIZES
 echo $FILE_NAMES
