@@ -6,8 +6,8 @@ TARGET_DIR=$1
 cd $TARGET_DIR
 
 # Get lists of files
-readarray TARGET_DIR_FILES <<< "$(find "$TARGET_DIR" -maxdepth 1 -type f -exec realpath --relative-to="$(pwd)" {} \;)"
-readarray TARGET_DIR_DIRECTORIES <<< "$(find "$TARGET_DIR" -mindepth 1 -maxdepth 1 -type d -exec realpath --relative-to="$(pwd)" {} \;)"
+readarray TARGET_DIR_FILES <<< "$(find "$TARGET_DIR" -maxdepth 1 -type f -printf '%P\n')"
+readarray TARGET_DIR_DIRECTORIES <<< "$(find "$TARGET_DIR" -mindepth 1 -maxdepth 1 -type d -printf '%P\n')"
 
 # Get file sizes
 for file in "${TARGET_DIR_FILES[@]}"; do
