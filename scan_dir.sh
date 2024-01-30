@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#  | sort -hr to sort by size
-
 TARGET_DIR=$1
 cd $TARGET_DIR
 
