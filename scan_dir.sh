@@ -9,7 +9,7 @@ readarray TARGET_DIR_DIRECTORIES <<< "$(find "$TARGET_DIR" -mindepth 1 -maxdepth
 TARGET_DIR_FILES="$(echo "${TARGET_DIR_FILES[@]}" | tr "\n" " ")"
 
 # Get file sizes
-readarray du_output <<< "$(bash -c "du -sh $TARGET_DIR_FILES 2> /dev/null" | grep -vP '^[0-9]+\.[0-9][A-Z]\s\.$' | sort -hr)"
+readarray du_output <<< "$(bash -c "du -sh $TARGET_DIR_FILES 2> /dev/null" | grep -vP '^[0-9]+(\.[0-9])?[A-Z]\s\.$' | sort -hr)"
 for file in "${du_output[@]}"; do
   FILE_SIZES="$FILE_SIZES*$(cut -d ' ' -f 1 <(echo $file))"
   FILE_NAMES="$FILE_NAMES*$(cut -d ' ' -f 2- <(echo $file))"
@@ -17,7 +17,7 @@ done
 
 TARGET_DIR_DIRECTORIES="$(echo "${TARGET_DIR_DIRECTORIES[@]}" | tr "\n" " ")"
 
-readarray du_output <<< "$(bash -c "du -sh $TARGET_DIR_DIRECTORIES 2> /dev/null" | grep -vP '^[0-9]+\.[0-9][A-Z]\s\.$' | sort -hr)"
+readarray du_output <<< "$(bash -c "du -sh $TARGET_DIR_DIRECTORIES 2> /dev/null" | grep -vP '^[0-9]+(\.[0-9])?[A-Z]\s\.$' | sort -hr)"
 for directory in "${du_output[@]}"; do
   DIR_SIZES="$DIR_SIZES*$(cut -d ' ' -f 1 <(echo $directory))"
   DIR_NAMES="$DIR_NAMES*$(cut -d ' ' -f 2- <(echo $directory))"
