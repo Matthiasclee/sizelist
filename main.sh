@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$(which fzf)" == "" ]; then
+  echo "Error: fzf must be installed." > /dev/stderr
+  exit 1
+fi
+
 TARGET_DIR=$1
 
 script_dir="$(dirname "$(readlink -f "$0")")"
