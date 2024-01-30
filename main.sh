@@ -15,6 +15,8 @@ while true; do
     cd ..
   else
     TARGET_DIR=$(echo "$SELECTION" | cut -d ' ' -f 2-)
-    cd $TARGET_DIR
+    if [ -d "$TARGET_DIR" ]; then
+      cd "$TARGET_DIR"
+    fi
   fi
 done
