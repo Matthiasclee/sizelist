@@ -22,8 +22,10 @@ for index in "${!FILE_NAMES[@]}"; do
   FILE_NAMES_ALL="$FILE_NAMES_ALL\n${FILE_SIZES[$index]} ${FILE_NAMES[$index]}"
 done
 
-echo "* $(pwd)"
-echo "* Back"
-echo "* Exit"
-echo -e "$DIR_NAMES_ALL" | sort -hr
-echo -e "$FILE_NAMES_ALL" | sort -hr
+echo -e "\e[32m\e[1m* $(pwd)\e[39m\e[0m"
+echo -e "\e[91m* Back\e[39m"
+echo -e "\e[91m* Exit\e[39m"
+echo
+echo -e "\e[94m\e[1m$( echo -e "$DIR_NAMES_ALL" | sort -hr)\e[39m\e[0m"
+echo
+echo -e "\e[33m$( echo -e "$FILE_NAMES_ALL" | sort -hr)\e[39m"

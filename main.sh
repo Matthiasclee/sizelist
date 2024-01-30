@@ -13,7 +13,7 @@ cd "$TARGET_DIR"
 
 while true; do
   TARGET_DIR="."
-  SELECTION=$(bash "$script_dir/list_data.sh" "$TARGET_DIR" "$script_dir" | fzf --reverse --no-info)
+  SELECTION=$(bash "$script_dir/list_data.sh" "$TARGET_DIR" "$script_dir" | fzf --reverse --no-info --ansi)
   if [ "$SELECTION" == "* Exit" ]; then
     break
   elif [ "$SELECTION" == "* Back" ]; then
