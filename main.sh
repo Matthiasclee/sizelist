@@ -15,4 +15,11 @@ for index in "${!DIR_NAMES[@]}"; do
   DIR_NAMES_ALL="$DIR_NAMES_ALL\n${DIR_SIZES[$index]} ${DIR_NAMES[$index]}"
 done
 
-echo -e "$DIR_NAMES_ALL" | sort -hr
+FILE_NAMES_ALL=""
+
+for index in "${!FILE_NAMES[@]}"; do
+  FILE_NAMES_ALL="$FILE_NAMES_ALL\n${FILE_SIZES[$index]} ${FILE_NAMES[$index]}"
+done
+
+echo -e "$DIR_NAMES_ALL" | sort -h
+echo -e "$FILE_NAMES_ALL" | sort -h
