@@ -16,7 +16,7 @@ while true; do
   SELECTION=$(bash "$script_dir/list_data.sh" "$TARGET_DIR" "$script_dir" | fzf --reverse --no-info --ansi)
   if [ "$SELECTION" == "* Exit" ]; then
     break
-  elif [ "$SELECTION" == "* Back" ]; then
+  elif [ "$SELECTION" == "* Parent Directory" ]; then
     cd ..
   else
     TARGET_DIR=$(echo "$SELECTION" | cut -d ' ' -f 2-)

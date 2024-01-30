@@ -23,7 +23,7 @@ for index in "${!FILE_NAMES[@]}"; do
 done
 
 echo -e "\e[32m\e[1m* $(pwd)\e[39m\e[0m"
-echo -e "\e[91m* Back\e[39m"
+echo -e "\e[91m* Parent Directory\e[39m"
 echo -e "\e[91m* Exit\e[39m"
 echo
 echo -e "\e[94m\e[1m$( echo -e "$DIR_NAMES_ALL" | sort -hr)\e[39m\e[0m"
