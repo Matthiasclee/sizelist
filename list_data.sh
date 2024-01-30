@@ -21,5 +21,6 @@ for index in "${!FILE_NAMES[@]}"; do
   FILE_NAMES_ALL="$FILE_NAMES_ALL\n${FILE_SIZES[$index]} ${FILE_NAMES[$index]}"
 done
 
+echo "* Exit"
 echo -e "$DIR_NAMES_ALL" | sort -hr
 echo -e "$FILE_NAMES_ALL" | sort -hr
